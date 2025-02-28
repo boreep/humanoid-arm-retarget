@@ -1,5 +1,8 @@
 import numpy as np
 
+ #采用角度直接映射的方式，
+# _solve_four_fingers 方法的作用是计算四个手指的角度（小指、无名指、中指、食指）。
+# 这四个角度的计算是基于手指关节的空间位置，通过 calculate_angle_between_vectors 方法计算得到指间角度，并进行适当的映射。
 
 def calculate_angle_between_vectors(v1, v2):
     # v1, v2为numpy数组，shape为(3,)
