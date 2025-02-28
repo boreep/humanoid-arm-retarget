@@ -38,7 +38,8 @@
   <h4>This repo originates from <a href="https://humanoid-manipulation.github.io/">Humanoid Manipulation Project</a></h4>
 </div>
 
-##介绍
+## 介绍
+
 代价函数用于衡量机器人当前状态与目标状态之间的差距。整个优化问题是基于代价函数进行求解的，代价函数包括以下几个部分：
 
 位置代价 (_position_cost): 计算左右臂末端执行器（End-Effector）之间的距离，作为代价的一部分。通过 _fi 函数计算，_fi 计算的是高斯函数形式的代价，用于平滑位置误差。
