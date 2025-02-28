@@ -13,6 +13,8 @@ try:
 except:
     print("ZED SDK not installed")
 
+ #异步性: 通过使用 async/await，能够实现非阻塞式的数据抓取，适合实时视频处理和并发操作。
+# 摄像头抽象: 为不同的摄像头（ZED 和 RealSense）提供统一的接口，简化了摄像头的使用和管理。
 
 class CameraType(Enum):
     ZED = 1
