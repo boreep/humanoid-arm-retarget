@@ -38,6 +38,25 @@
   <h4>This repo originates from <a href="https://humanoid-manipulation.github.io/">Humanoid Manipulation Project</a></h4>
 </div>
 
+##介绍
+代价函数用于衡量机器人当前状态与目标状态之间的差距。整个优化问题是基于代价函数进行求解的，代价函数包括以下几个部分：
+
+位置代价 (_position_cost): 计算左右臂末端执行器（End-Effector）之间的距离，作为代价的一部分。通过 _fi 函数计算，_fi 计算的是高斯函数形式的代价，用于平滑位置误差。
+
+方向代价 (_orientation_cost): 计算目标姿态（四元数）与实际姿态之间的误差，同样使用高斯函数进行计算。使用了 quaternionic 库来计算四元数之间的旋转距离。
+
+关节速度代价 (_joint_velocity_cost): 计算当前关节角度与上一次优化结果之间的差异，从而限制关节的运动速度。
+
+奇异性代价 (_singularity_cost): 虽然这个方法没有实现，但它应该是用来处理机械臂奇异性（当机械臂处于某些配置时，运动学解可能变得不稳定）的问题。
+
+ 求解手腕角度
+_solve_wrist_angles: 该方法用于计算手腕的旋转角度。它首先计算手腕和前臂之间的夹角，并根据手臂的旋转方向来确定是朝内还是朝外旋转，然后对结果进行限制以确保手腕角度不超出物理限制。
+ 求解上臂角度
+_solve_uparm_angles: 该方法根据目标位置和姿态来优化计算上臂的关节角度。通过将目标位置和目标四元数（目标姿态）输入到目标函数中，使用优化算法（SLSQP）进行求解，优化结果即为最佳的关节角度。
+
+
+优化目标函数 (_objective_function): 这是实际的优化目标函数，它结合了位置代价、方向代价和关节速度代价，计算总代价，用于优化过程。
+---
 ## Introduction
 
 This repository is designed to retarget human arm movements to 7 degrees of freedom humanoid robot arm motions.
