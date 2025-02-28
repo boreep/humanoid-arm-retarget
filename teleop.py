@@ -11,6 +11,7 @@ from interface import HandController
 from loop_rate_limiters import RateLimiter
 
 
+##基于已有脚本和接口进行实际控制
 ###################### Initialization ########################
 s = VisionProStreamer(ip="192.168.0.154")
 snap_monitor = SnapMonitor()
